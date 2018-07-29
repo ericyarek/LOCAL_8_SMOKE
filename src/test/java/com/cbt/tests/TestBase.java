@@ -8,6 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
@@ -22,13 +23,11 @@ public abstract class TestBase {
 	protected WebDriver driver;
 	protected  Actions actions;
 	
-	protected ExtentReports report;
-	protected ExtentHtmlReporter htmlReporter;
-	protected ExtentTest extentLogger;
+	protected static  ExtentReports report;
+	protected static ExtentHtmlReporter htmlReporter;
+	protected static ExtentTest extentLogger;
 	
-	@BeforeTest
-	public void setUpTest() {
-		//actual reporter
+	static {
 		report = new ExtentReports();
 		//System.getProperty("user.dir")--> gets current folder PAth
 		//test-output --> folder in current project , will be created by testng if it does not already exist
@@ -42,8 +41,50 @@ public abstract class TestBase {
 		report.setSystemInfo("browser", ConfigurationReader.getProperty("browser"));
 		report.setSystemInfo("OS", System.getProperty("os.name"));
 		
-		htmlReporter.config().setReportName("Web Orders Automated Test Reports");
+		htmlReporter.config().setReportName("Myfitnesspal Automated Test Reports");
+		
 	}
+	//WAS BEFORE TEST -->  BEFORE METHOD WILL OVERRIDE EVERY TIME --> SO USE BEFORE CLASS --> Set it in Static
+//	@BeforeMethod(alwaysRun=true)
+//	public void setUpReport() {
+//		//actual reporter
+//				report = new ExtentReports();
+//				//System.getProperty("user.dir")--> gets current folder PAth
+//				//test-output --> folder in current project , will be created by testng if it does not already exist
+//				//report.html --> name of the report file
+//				String filePath = System.getProperty("user.dir") + "//test-output//report.html";
+//				htmlReporter = new ExtentHtmlReporter(filePath);
+//				
+//				report.attachReporter(htmlReporter);
+//				
+//				report.setSystemInfo("ENV", "staging");
+//				report.setSystemInfo("browser", ConfigurationReader.getProperty("browser"));
+//				report.setSystemInfo("OS", System.getProperty("os.name"));
+//				
+//				htmlReporter.config().setReportName("Myfitnesspal Automated Test Reports");
+//		
+//		
+//	}
+	
+	//WAS BEFORE TEST -->  BEFORE METHOD WILL OVERRIDE EVERY TIME --> SO USE BEFORE CLASS
+//	@BeforeMethod(alwaysRun=true)
+//	public void setUpTest() {
+//		//actual reporter
+//		report = new ExtentReports();
+//		//System.getProperty("user.dir")--> gets current folder PAth
+//		//test-output --> folder in current project , will be created by testng if it does not already exist
+//		//report.html --> name of the report file
+//		String filePath = System.getProperty("user.dir") + "//test-output//report.html";
+//		htmlReporter = new ExtentHtmlReporter(filePath);
+//		
+//		report.attachReporter(htmlReporter);
+//		
+//		report.setSystemInfo("ENV", "staging");
+//		report.setSystemInfo("browser", ConfigurationReader.getProperty("browser"));
+//		report.setSystemInfo("OS", System.getProperty("os.name"));
+//		
+//		htmlReporter.config().setReportName("Web Orders Automated Test Reports");
+//	}
 	
 	@BeforeMethod(alwaysRun=true)
 	public void setUp() {
@@ -80,7 +121,7 @@ public abstract class TestBase {
         Driver.closeDriver();
     }
 	
-	@AfterTest
+	@AfterMethod
 	public void tearDownTest() {
 		report.flush();
 	}

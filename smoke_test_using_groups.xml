@@ -1,0 +1,23 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Smoke tests" verbose="2">
+    <test name="Smoke tests">
+        <groups>
+        	<run>
+        		<include name = "smoke"></include>
+        	</run>
+        
+        </groups>
+        
+        <classes>
+        	
+        	<class name="com.cbt.tests.yaroslav.LoginTests"></class>
+       		<!--   <class name="com.cbt.tests.begimai.MatchingFoodResultsTest"></class> -->
+            <class name="com.cbt.tests.damira.ExercisesTestDamira"></class>
+           <!-- <class name="com.cbt.tests.oleksandr.SmokeTestCases7and8"></class> -->
+          <!--  <class name="com.cbt.tests.tarik.NegativeLoginFunctionalityTarik"></class> -->
+            
+        </classes>
+    
+    </test>
+
+</suite>

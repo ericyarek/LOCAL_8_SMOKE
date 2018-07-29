@@ -4,3 +4,4 @@
 .classpath target/ 
 test-output/ 
 .config/
+/target/

@@ -1,4 +1,4 @@
-package com.cbt.pages;
+package com.cbt.pages.yaroslav;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,21 +12,22 @@ public class LoginPage {
 	public LoginPage() {
 		PageFactory.initElements(Driver.getDriver(), this);	
 	}
+	@FindBy(xpath = "//h2[.='Member Login']")
+	public WebElement memberLoginText;
+	
+	@FindBy(name = "username")
+	public WebElement emailAddress;
 
-	@FindBy(id = "ctl00_MainContent_username")
-	public WebElement userName;
 
-	@FindBy(id = "ctl00_MainContent_password")
+	@FindBy(name = "password")
 	public WebElement password;
 
-	@FindBy(id = "ctl00_MainContent_login_button")
+	@FindBy(xpath = "//input[@value='Log In']")
 	public WebElement loginButton;
-
-	@FindBy(id = "ctl00_MainContent_status")
-	public WebElement invalidUserNameErrMsg;
+	
 
 	public void login(String uid, String pwd) {
-		userName.sendKeys(uid);
+		emailAddress.sendKeys(uid);
 		password.sendKeys(pwd);
 		loginButton.click();
 	}

@@ -3,10 +3,14 @@
 	
 	<test name="Login smoke tests">
 		<packages>
-			<package name="com.cbt.tests.*"/>
+			<package name="com.cbt.tests.login"/>
 		</packages>
 	</test>
 
-	
+	<test name="Order smoke tests">
+		<packages>
+			<package name="com.cbt.tests.order"/>
+		</packages>
+	</test>
 
 </suite>
