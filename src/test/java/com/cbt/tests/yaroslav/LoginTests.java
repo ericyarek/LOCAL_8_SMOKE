@@ -31,7 +31,7 @@ public class LoginTests extends TestBase {
 	}
 	
 	
-	@Test (groups= {"smokes"})
+	@Test (groups= {"smoke"})
 	public void positiveLoginFunctionalityTest() {
 		mainPage = new MainPage();
 		loginPage = new LoginPage();
@@ -44,7 +44,7 @@ public class LoginTests extends TestBase {
 		extentLogger.info("Click Log In ");
 		assertTrue(loginPage.memberLoginText.getText().equals("Member Login"));
 		
-		loginPage.login("rob123QW@gmail.com", "1qazxsw2");
+		loginPage.login("rob123QW@gmail.com", "1qazxsw2YOO");
 		String expectedAcc = ConfigurationReader.getProperty("username").substring(0, ConfigurationReader.getProperty("username").indexOf("@"));
 		assertEquals(homePage.accountName.getText(), expectedAcc);
 		
