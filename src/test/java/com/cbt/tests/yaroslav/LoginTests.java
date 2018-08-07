@@ -31,7 +31,7 @@ public class LoginTests extends TestBase {
 	}
 	
 	
-	@Test (groups= {"smoke"})
+	@Test (groups= {"smokes"})
 	public void positiveLoginFunctionalityTest() {
 		mainPage = new MainPage();
 		loginPage = new LoginPage();
